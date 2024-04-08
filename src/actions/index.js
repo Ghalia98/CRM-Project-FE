@@ -1,3 +1,19 @@
+
+
+export const selectPerson = (peopleId) => {
+return {
+    type: 'SELECTED_PERSON',
+    selectId: peopleId,
+} }
+
+
+export const nonSelected = () => {
+    return {
+        type: 'NONE_SELECTED',
+    }
+}
+
+
 export const loadInitialContacts = () => {
     return (dispatch) => {
         fetch('http://127.0.0:3000/contact')
