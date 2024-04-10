@@ -114,9 +114,54 @@ class DetailView extends Component {
                         <MaterialIcon name={'mode-edit'} size={40} style={styles.textIcons}/>
                         <Text style={styles.finalText}>{this.props.person.notes}</Text>
                     </View>
+                    <View style={styles.editDeleteArea}>
+                        <TouchableOpacity style={styles.sections}
+                                          onPress={() => {this.updateTest();}}
+                        >
+                            <MaterialIcon name={'autorenew'} size={40} style={styles.editIcon}/>
+                            <Text style={styles.finalText}>EDIT</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.sections}
+                                          onPress={() => {this.props.deleteContact(this.props.person._id);}}
+                        >
+                            <MaterialIcon name={'delete-forever'} size={40} style={styles.editIcon}/>
+                            <Text style={styles.finalText}>DELETE</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.actionArea}>
+                        <TouchableOpacity>
+                            <Image
+                                source={require('../images/call.png')}
+                                style={styles.actionImage}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Image
+                                source={require('../images/email.png')}
+                                style={styles.actionImage}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Image
+                                source={require('../images/sms.png')}
+                                style={styles.actionImage}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.actionArea}>
+                        <Text>Call</Text>
+                        <Text>Email</Text>
+                        <Text>SMS</Text>
+                    </View>
                 </ScrollView>
             </View>
         )
     }
 }
-export default DetailView;
+const mapStateToProps = state => {
+    return {
+        person: state.personSelected,
+        toUpdate: state.toUpdate,
+    }
+}
+export default connect(mapStateToProps, actions)(DetailView);

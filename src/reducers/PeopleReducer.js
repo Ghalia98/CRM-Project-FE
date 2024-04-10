@@ -27,10 +27,64 @@ export default (state= initialState, action) => {
                personSelected: action.selectId,
            }
 
-       case 'NONE SELECTED':
+       case 'NONE_SELECTED':
            return {
                ...state,
                detailView: false,
+               personSelected: null,
+           }
+       case 'FORM_UPDATE':
+           return {
+               ...state,
+               [action.payload.prop]: action.payload.value
+           }
+       case 'NEW_CONTACT':
+           return {
+               ...state,
+               firstName: '',
+               lastName: '',
+               phone: '',
+               email: '',
+               company: '',
+               project: '',
+               notes: '',
+           }
+       case 'ADD_PERSON':
+           return {
+               ...state,
+               ...action.newPerson,
+           }
+       case 'UPDATE_CONTACT':
+           return {
+               ...state,
+               toUpdate: true,
+               firstName: action.payload.firstName,
+               lastName: action.payload.lastName,
+               phone: action.payload.phone,
+               email: action.payload.email,
+               company: action.payload.company,
+               project: action.payload.project,
+               notes: action.payload.notes,
+               _id: action.payload._id,
+           }
+       case 'SAVE_CONTACT':
+           return {
+               ...state,
+               toUpdate: false,
+               detailView: false,
+               firstName: '',
+               lastName: '',
+               phone: '',
+               email: '',
+               company: '',
+               project: '',
+               notes: '',
+               _id: '',
+           }
+       case 'DELETE_CONTACT':
+           return {
+               ...state,
+               toUpdate: false,
                personSelected: null,
            }
        default:
