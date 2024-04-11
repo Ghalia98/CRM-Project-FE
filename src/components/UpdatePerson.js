@@ -25,7 +25,6 @@ class UpdatePerson extends Component {
     onUpdatePress () {
         const {firstName, lastName, phone, email, company, project, notes, _id } = this.props;
         this.props.saveContact({firstName, lastName, phone, email, company, project, notes, _id});
-        this.props.navigation.navigate('People');
     }
     render () {
         return (
@@ -75,7 +74,7 @@ class UpdatePerson extends Component {
                         onChangeText={value => this.props.formUpdate({prop: 'notes', value})}
                     />
                     <View style={styles.addButton}>
-                        <Button title='Add' color='#4db6ac' onPress={this.onUpdatePress.bind(this)}/>
+                        <Button title='Save' color='#4db6ac' onPress={this.onUpdatePress.bind(this)}/>
                     </View>
                 </View>
             </ScrollView>

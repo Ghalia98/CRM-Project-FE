@@ -21,7 +21,7 @@ export const formUpdate = ({prop, value}) => {
 
 export const createNewContact = ({firstName, lastName, phone, email, company, project, notes }) => {
 return (dispatch) => {
-    fetch('http://127.0.0:3000/contact', {
+    fetch('http://127.0.0.1:27017/contact', {
         method: 'POST',
         body: JSON.stringify({
             'firstName': firstName,
@@ -56,7 +56,7 @@ export const updateContact = (person) => {
 
 export const saveContact = ({firstName, lastName, phone, email, company, project, notes, _id}) => {
     return (dispatch) => {
-        fetch('http://127.0.0:3000/contact/${_id}', {
+        fetch(`http://127.0.0.1:27017/contact/${_id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 'firstName': firstName,
@@ -84,7 +84,7 @@ export const saveContact = ({firstName, lastName, phone, email, company, project
 
 export const deleteContact = (id) => {
     return (dispatch) => {
-        fetch('http://127.0.0:3000/contact/${id}', {
+        fetch(`http://127.0.0.1:27017/contact/${id}`, {
             method: 'DELETE',
         }).then(() => {
                 dispatch({type: 'DELETE_CONTACT'})
@@ -98,7 +98,7 @@ export const deleteContact = (id) => {
 
 export const loadInitialContacts = () => {
     return (dispatch) => {
-        fetch('http://127.0.0:3000/contact')
+        fetch('http://127.0.0.1:27017/contact')
             .then((response) => {
                 return response.json()
             })

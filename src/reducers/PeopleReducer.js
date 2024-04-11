@@ -85,6 +85,15 @@ export default (state= initialState, action) => {
            return {
                ...state,
                toUpdate: false,
+               firstName: '',
+               lastName: '',
+               phone: '',
+               email: '',
+               company: '',
+               project: '',
+               notes: '',
+               _id: '',
+               detailView: false,
                personSelected: null,
            }
        default:
